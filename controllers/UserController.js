@@ -1,28 +1,18 @@
-let Place = require('../models/Place')
+let User = require('../models/User')
 
-/*const places = [
-    {
-        name: 'Plaza de bolívar',
-        description: 'lorem ipsom'
-    },
-    {
-        name: 'Centro comercial unicentro'
-    }
-] */
-
-let PlaceController = {
+let UserController = {
     //Listar
-    show(req, res) {
-        Place.find({})
+   /* show(req, res) {
+        User.find({})
             .then(docs => {
                 res.json(docs)
             }).catch(err => {
                 res.json(err)
             })
-    },
+    },*/
     //Bucar
     find(req, res){
-        Place.findById({
+        User.findById({
             _id: req.params.id
         })
         .then(doc =>{
@@ -31,12 +21,12 @@ let PlaceController = {
             res.json(err)
         })
     },
-    //Crear Lugares
+    //Crear usuarios
     store(req, res) {
-        Place.create({
+        User.create({
             name: req.body.name,
-            description: req.body.description,
-            location: req.body.location
+            mail: req.body.mail,
+            password: req.body.password
         }).then(doc => {
             res.json(doc)
         }).catch(err => {
@@ -44,8 +34,8 @@ let PlaceController = {
         })
     },
     //Actualizar
-    update(req, res){
-        Place.update({
+    /* update(req, res){
+        User.update({
             _id: req.params.id
         },{
           name: req.body.name,
@@ -59,14 +49,14 @@ let PlaceController = {
     },
     //Eliminar
     destroy(req, res){
-        Place.findByIdAndRemove({
+        User.findByIdAndRemove({
             _id: req.params.id
         }).then(doc => {
             res.json(doc)
         }).catch(err => {
             res.json(err)
         })
-    }
-}
+    }*/
+} 
 
-module.exports = PlaceController;
+module.exports = UserController;
